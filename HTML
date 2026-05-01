@@ -1,0 +1,140 @@
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<div class="app">
+
+  <!-- ═══════════════ HOME SCREEN ═══════════════ -->
+  <div class="screen active" id="home">
+    <div class="hero">
+      <div class="hero-flag">
+        <div class="flag-g"></div>
+        <div class="flag-w"></div>
+        <div class="flag-r"></div>
+      </div>
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-title">
+          <span class="g">Italy</span> <span class="d">Heri</span><span class="r">tage</span>
+        </div>
+        <p class="hero-tagline">Explore the Eternal Beauty, and Discover the Soul of Mediterranean</p>
+      </div>
+    </div>
+
+    <div class="home-body">
+      <p class="home-subtitle">Tap a city to explore</p>
+
+      <div class="cities-grid" id="cities-grid">
+
+        <div class="city-card" onclick="showCity('rome')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/500px-Colosseo_2020.jpg" alt="Rome">
+          </div>
+          <span class="city-name">Rome</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('milan')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Duomo_di_Milano_from_Piazza_del_Duomo.jpg/500px-Duomo_di_Milano_from_Piazza_del_Duomo.jpg" alt="Milan">
+          </div>
+          <span class="city-name">Milan</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('pisa')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Leaning_Tower_of_Pisa_%28rectified%29.jpg/400px-Leaning_Tower_of_Pisa_%28rectified%29.jpg" alt="Pisa">
+          </div>
+          <span class="city-name">Pisa</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('verona')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Verona_Arena_seen_from_Piazza_Bra.jpg/500px-Verona_Arena_seen_from_Piazza_Bra.jpg" alt="Verona">
+          </div>
+          <span class="city-name">Verona</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('florence')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Firenze_from_Piazzale_Michelangelo_%28cropped%29.jpg/500px-Firenze_from_Piazzale_Michelangelo_%28cropped%29.jpg" alt="Florence">
+          </div>
+          <span class="city-name">Florence</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('tuscia')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Civita_di_Bagnoregio1.jpg/600px-Civita_di_Bagnoregio1.jpg" alt="Tuscia">
+          </div>
+          <span class="city-name">Tuscia</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('bologna')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bologna_-_Palazzo_Comunale.jpg/500px-Bologna_-_Palazzo_Comunale.jpg" alt="Bologna">
+          </div>
+          <span class="city-name">Bologna</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('messina')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Messina_-_panorama_dal_porto.jpg/600px-Messina_-_panorama_dal_porto.jpg" alt="Messina">
+          </div>
+          <span class="city-name">Messina</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('genoa')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Genova_bw_1.jpg/500px-Genova_bw_1.jpg" alt="Genoa">
+          </div>
+          <span class="city-name">Genoa</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('palermo')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Palermo_-_Cattedrale.jpg/600px-Palermo_-_Cattedrale.jpg" alt="Palermo">
+          </div>
+          <span class="city-name">Palermo</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('naples')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Naples_BW_2013-05-16_13-52-03.jpg/500px-Naples_BW_2013-05-16_13-52-03.jpg" alt="Naples">
+          </div>
+          <span class="city-name">Naples</span>
+        </div>
+
+        <div class="city-card" onclick="showCity('venice')">
+          <div class="city-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Canal_Grande_from_Rialto_bridge%2C_south_end.jpg/500px-Canal_Grande_from_Rialto_bridge%2C_south_end.jpg" alt="Venice">
+          </div>
+          <span class="city-name">Venice</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ CITY SCREEN ═══════════════ -->
+  <div class="screen" id="city-screen">
+    <div class="city-header">
+      <img id="city-hero-img" src="" alt="">
+      <div class="city-header-overlay"></div>
+      <button class="back-btn" onclick="goHome()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back
+      </button>
+      <div class="city-header-text">
+        <h1 id="city-title"></h1>
+      </div>
+    </div>
+
+    <div class="city-body" id="city-body">
+      <p class="city-desc" id="city-desc"></p>
+      <p class="section-title">Landmarks</p>
+      <div id="landmarks-list"></div>
+    </div>
+  </div>
+
+</div>
