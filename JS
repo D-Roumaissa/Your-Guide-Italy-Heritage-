@@ -1,0 +1,756 @@
+/* ══════════════════════════════════════════
+   Italy Heritage — app.js (CodePen version)
+   Data embedded directly — no fetch needed
+   ══════════════════════════════════════════ */
+
+const cities = {
+  "rome": {
+    "name": "Rome",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/600px-Colosseo_2020.jpg",
+    "desc": "The Eternal City. A colossal open-air museum and the heart of Western civilization. A place where 2,700 years of history are etched into every stone, blending the grandeur of the Roman Empire with the spiritual center of the Vatican and the elegance of the Baroque era.",
+    "landmarks": [
+      {
+        "name": "The Colosseum",
+        "desc": "The ultimate symbol of Roman engineering and power. This massive elliptical amphitheater once held up to 80,000 spectators who gathered to witness gladiatorial contests. Standing amidst its tiered stone arches, one can almost hear the echoes of ancient cheers and the roar of a bygone empire.",
+        "facilities": "Located at Piazza del Colosseo. Directly accessible via the Colosseo Metro station (Line B). Palazzo Manfredi offers a terrace with a direct view of the arena.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1555992457-b8fefdd09069?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Colosseum+Rome+Italy"
+      },
+      {
+        "name": "The Pantheon",
+        "desc": "The best-preserved monument of Ancient Rome. A miracle of architecture featuring the world's largest unreinforced concrete dome with its famous Oculus. It has served as a place of worship for nearly 2,000 years and holds the tomb of Renaissance master Raphael.",
+        "facilities": "Situated in the lively Piazza della Rotonda. Surrounded by historic gelaterias and a short walk from the elegant Grand Hotel de la Minerve.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1568797629192-789acf8e4df3?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Pantheon+Rome"
+      },
+      {
+        "name": "Trevi Fountain",
+        "desc": "The world's most famous Baroque fountain. Tossing a coin over your shoulder is a legendary tradition that ensures your eventual return to the crystalline beauty of Rome.",
+        "facilities": "Located in the Trevi district. Hotel Fontana sits directly across from the monument offering a rare bird's-eye view.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1529154166925-574a0236a4f4?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1601581975053-7c199a2b6b89?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Trevi+Fountain+Rome"
+      },
+      {
+        "name": "Roman Forum & Palatine Hill",
+        "desc": "The beating heart of ancient Roman life. Walking through the ruins of the Forum is a journey through the political, legal, and social center of the empire. Above lies the Palatine Hill, where emperors built their lavish palaces overlooking the ruins below.",
+        "facilities": "Entrance adjacent to the Colosseum. Hotel Forum nearby offers a stunning rooftop restaurant overlooking the ancient ruins at night.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1562183241-840b8af0721e?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Roman+Forum+Rome"
+      },
+      {
+        "name": "Trastevere District",
+        "desc": "The soul of authentic Rome. This medieval neighborhood across the Tiber River is a maze of narrow cobblestone alleys, ivy-draped walls, and hidden piazzas. The perfect place to experience the Roman Dolce Vita.",
+        "facilities": "Reachable via Tram 8 from Piazza Venezia. Home to charming boutique stays like Villa della Fonte and famous for its vibrant nightlife.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555992336-03a23c7b20ee?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Trastevere+Rome"
+      }
+    ]
+  },
+  "milan": {
+    "name": "Milan",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Duomo_di_Milano_from_Piazza_del_Duomo.jpg/600px-Duomo_di_Milano_from_Piazza_del_Duomo.jpg",
+    "desc": "The Global Capital of Fashion and Design. A majestic metropolis where Gothic spires meet futuristic skyscrapers, offering a sophisticated blend of world-class art, high-end shopping, and culinary innovation.",
+    "landmarks": [
+      {
+        "name": "Duomo di Milano",
+        "desc": "A white marble forest of 3,400 statues and 135 spires. This Gothic cathedral took nearly six centuries to complete. Walking on its rooftop terraces offers a breathtaking view of the city and, on clear days, the distant snow-capped Alps.",
+        "facilities": "Located in the central Piazza del Duomo. Directly served by the Duomo Metro station. Park Hyatt Milan is just steps away.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1574158622682-e719689632a4?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Duomo+di+Milano"
+      },
+      {
+        "name": "Galleria Vittorio Emanuele II",
+        "desc": "Often called Milan's Drawing Room — one of the world's oldest and most beautiful shopping malls. Housed under a magnificent glass-and-iron dome with mosaic floors and prestigious boutiques.",
+        "facilities": "Connects Piazza del Duomo to Piazza della Scala. Home to the historic Savini restaurant and the ultra-luxury Galleria Vik Milano hotel.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1602940659954-ddd21f3f2fa7?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Galleria+Vittorio+Emanuele+II+Milan"
+      },
+      {
+        "name": "Teatro alla Scala",
+        "desc": "One of the most famous opera houses in the world. Since its inauguration in 1778, its red-and-gold auditorium has hosted the greatest opera singers and conductors in history.",
+        "facilities": "Located in Piazza della Scala. Within walking distance of the Grand Hotel et de Milan, a favorite of the composer Giuseppe Verdi.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1567275706-8ade12c5bd3e?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Teatro+alla+Scala+Milan"
+      },
+      {
+        "name": "Sforza Castle",
+        "desc": "A massive medieval fortress that once housed the ruling Sforza dynasty. Today its courtyards contain several museums, including the home of Michelangelo's last unfinished masterpiece, the Pietà Rondanini.",
+        "facilities": "Near Cadorna station. A short walk from the eco-chic Hotel Milano Scala.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548813831-0268a11e9741?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Sforza+Castle+Milan"
+      },
+      {
+        "name": "The Last Supper",
+        "desc": "A UNESCO World Heritage site and home to Leonardo da Vinci's The Last Supper. This 15th-century convent represents the peak of Renaissance art and remains one of the world's most studied spiritual works.",
+        "facilities": "Located in the Magenta district. Tickets must be booked months in advance. Palazzo delle Stelline nearby offers a quiet, historic stay.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1565099824688-0e90f43d4f38?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=The+Last+Supper+Milan"
+      }
+    ]
+  },
+  "pisa": {
+    "name": "Pisa",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Leaning_Tower_of_Pisa_%28rectified%29.jpg/400px-Leaning_Tower_of_Pisa_%28rectified%29.jpg",
+    "desc": "The City of Miracles. Once a powerful maritime republic that rivaled Venice and Genoa, Pisa is today a serene Tuscan treasure defined by its Square of Miracles, where iconic marble monuments stand against emerald lawns.",
+    "landmarks": [
+      {
+        "name": "The Leaning Tower",
+        "desc": "One of the most famous architectural mishaps in history. This freestanding bell tower began to tilt during construction in the 12th century. Today it stands as a symbol of resilience, its white marble tiers gleaming under the Tuscan sun.",
+        "facilities": "Located in the Piazza dei Miracoli. Short bus ride from Pisa Centrale station. Hotel Relais Dell'Orologio offers classic elegance with a direct view.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1565711561500-49678a10a63f?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Leaning+Tower+of+Pisa"
+      },
+      {
+        "name": "Pisa Cathedral",
+        "desc": "A masterpiece of Pisan Romanesque architecture. The cathedral's grey-and-white striped marble facade and incredible bronze doors testify to the city's medieval wealth.",
+        "facilities": "Situated right next to the Tower. The area is pedestrian-only. Allegroitalia Pisa Tower Plaza offers modern comfort nearby.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1534430480872-c0a6b3f2f0b9?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Pisa+Cathedral+Italy"
+      },
+      {
+        "name": "The Baptistery",
+        "desc": "The largest baptistery in Italy, known for its unique transition from Romanesque to Gothic style. World-renowned for its perfect acoustics — if a guard sings inside, the echoes sound like a celestial choir.",
+        "facilities": "Located directly in front of the Cathedral. Near the Museo delle Sinopie and several charming artisanal shops.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1535498730771-e735b998cd64?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Baptistery+Pisa"
+      },
+      {
+        "name": "Knights' Square",
+        "desc": "The political heart of ancient Pisa, dominated by the Palazzo della Carovana with its stunning sgraffito facade by Giorgio Vasari. Home to one of Italy's most prestigious universities.",
+        "facilities": "A 10-minute walk from the Tower. Close to Hotel Di Stefano with its rooftop terrace views.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1534507592333-1d0d3d4f7c7d?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Piazza+dei+Cavalieri+Pisa"
+      },
+      {
+        "name": "Lungarni — The Arno Riverbanks",
+        "desc": "Stroll along the banks of the Arno River, lined with noble palaces and the jewel-like Gothic church of Santa Maria della Spina. As night falls, reflections create a shimmering romantic atmosphere.",
+        "facilities": "Near the city center and main shopping street Corso Italia. The Royal Victoria Hotel is one of the most historic stays along the river.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548783701-3b4b8e47f3b5?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Lungarni+Pisa"
+      }
+    ]
+  },
+  "verona": {
+    "name": "Verona",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Verona_Arena_seen_from_Piazza_Bra.jpg/600px-Verona_Arena_seen_from_Piazza_Bra.jpg",
+    "desc": "The City of Love. A Roman-era jewel and the legendary setting for Shakespeare's Romeo and Juliet. A symbol of eternal romance and architectural preservation, where ancient arenas still echo with operatic melodies.",
+    "landmarks": [
+      {
+        "name": "Juliet's House",
+        "desc": "A pilgrimage site for lovers worldwide. This 13th-century palace features the iconic stone balcony where Juliet is said to have stood. The courtyard, filled with love letters and a bronze statue, exudes timeless romance.",
+        "facilities": "Located in the heart of the historic center, a short walk from Hotel Due Torri. Verona Porta Nuova station is a quick taxi ride away.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Juliet%27s+House+Verona"
+      },
+      {
+        "name": "Verona Arena",
+        "desc": "An ancient Roman amphitheatre that predates the Colosseum and is still in use today. Its pink marble stones have survived for nearly 2,000 years. Attending a night opera here under the stars is a sensory experience of a lifetime.",
+        "facilities": "Situated in the vibrant Piazza Bra, surrounded by high-end cafes and close to Hotel Accademia.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1518730518541-d0a3bc4f8e5c?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Verona+Arena+Italy"
+      },
+      {
+        "name": "Castel San Pietro",
+        "desc": "For the ultimate view of Verona, take the funicular to this fortress perched on a hill. It offers the most breathtaking panoramic view of the city's red rooftops, medieval towers, and the Adige River.",
+        "facilities": "Reachable via the Funicolare di Castel San Pietro. The luxury Relais Fra' Lorenzo is nearby.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548783701-3b4b8e47f3b5?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Castel+San+Pietro+Verona"
+      },
+      {
+        "name": "Piazza delle Erbe",
+        "desc": "Often called the most beautiful square in Italy, it sits on the site of the ancient Roman Forum. Surrounded by frescoed palaces, the Madonna Verona fountain, and the high Lamberti Tower.",
+        "facilities": "Located steps from the luxury shopping street Via Mazzini. Near the boutique Hotel Palazzo Victoria.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1574158622682-e719689632a4?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Piazza+delle+Erbe+Verona"
+      }
+    ]
+  },
+  "florence": {
+    "name": "Florence",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Firenze_from_Piazzale_Michelangelo_%28cropped%29.jpg/600px-Firenze_from_Piazzale_Michelangelo_%28cropped%29.jpg",
+    "desc": "The Cradle of the Renaissance. A luminous jewel on the banks of the Arno River, where every cobblestone tells a story of artistic genius. A city where time stands still, allowing you to walk in the footsteps of Michelangelo and Da Vinci.",
+    "landmarks": [
+      {
+        "name": "The Duomo",
+        "desc": "A breathtaking symphony of green, pink, and white marble. Dominating the skyline is Brunelleschi's red-tiled dome — a miracle of Renaissance engineering. The climb to the top rewards you with a sea of red roofs stretching toward the Tuscan hills.",
+        "facilities": "Located in the central Piazza del Duomo. Best visited early morning. Historic Hotel Brunelleschi is built within a Byzantine tower nearby.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1543429257-3eb0b9e23495?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1565711561500-49678a10a63f?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Florence+Cathedral+Italy"
+      },
+      {
+        "name": "Ponte Vecchio",
+        "desc": "The Old Bridge is a romantic icon that defies time. Famous for the colorful jewelry shops hanging over the Arno like a scene from a fairy tale. At sunset, the water reflects the golden glow while street musicians fill the air with melody.",
+        "facilities": "Connecting the city center to the Oltrarno district. For a spectacular view of the bridge, visit the terrace of Hotel Lungarno.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Ponte+Vecchio+Florence"
+      },
+      {
+        "name": "Uffizi Gallery",
+        "desc": "More than a museum — the sanctuary of the Western soul. Walking through its long frescoed corridors, you come face-to-face with Botticelli's Birth of Venus and Da Vinci's Annunciation.",
+        "facilities": "Located between Piazza della Signoria and the Arno. Requires pre-booked tickets. Hotel degli Orafi nearby was the setting for A Room with a View.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1534430480872-c0a6b3f2f0b9?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Uffizi+Gallery+Florence"
+      },
+      {
+        "name": "Piazzale Michelangelo",
+        "desc": "The ultimate panoramic balcony of Florence. Perched on a hill, this square offers a cinematic view of the entire city. A place of pilgrimage for dreamers at sunset, where the sky turns violet and city lights sparkle like fallen stars.",
+        "facilities": "Accessible via a scenic walk or Bus 12/13. Near the luxury Villa Cora and the ancient San Miniato al Monte church.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1543429257-3eb0b9e23495?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548783701-3b4b8e47f3b5?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Piazzale+Michelangelo+Florence"
+      },
+      {
+        "name": "Palazzo Vecchio & Piazza della Signoria",
+        "desc": "The fortress-like heart of Florentine power. This square is an open-air sculpture gallery where a replica of Michelangelo's David stands guard. The Palazzo's crenelated tower rises defiantly against the sky.",
+        "facilities": "The civic center of Florence. Surrounded by historic cafes like Rivoire. Bernini Palace Hotel is a short walk away.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Palazzo+Vecchio+Florence"
+      }
+    ]
+  },
+  "tuscia": {
+    "name": "Tuscia",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Civita_di_Bagnoregio1.jpg/600px-Civita_di_Bagnoregio1.jpg",
+    "desc": "The Mysterious Heart of the Etruscans. A land of deep tufa canyons, enchanted forests, and medieval villages carved into rock. A place where nature and history intertwine in a silent embrace, offering a journey into the ancient soul of Italy.",
+    "landmarks": [
+      {
+        "name": "Civita di Bagnoregio",
+        "desc": "Known as The Dying City, this ethereal village perches on a crumbling pinnacle of volcanic rock. Accessible only by a narrow pedestrian bridge, it seems to float amidst the clouds. Walking through its ancient stone arches feels like stepping into a dream.",
+        "facilities": "Accessible via a scenic footbridge from the town of Bagnoregio. Stay at the boutique Corte della Maestà for a truly magical medieval experience.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1534507592333-1d0d3d4f7c7d?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1535498730771-e735b998cd64?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Civita+di+Bagnoregio+Italy"
+      },
+      {
+        "name": "Monster Park of Bomarzo",
+        "desc": "A surreal Renaissance garden like no other. Carved into the living rock are colossal grotesque statues of mythological beasts. Created by Prince Pier Francesco Orsini to cope with his grief, this Sacred Grove is a hauntingly beautiful labyrinth.",
+        "facilities": "Located in the town of Bomarzo, a short drive from Viterbo. The nearby Agriturismo Le Querce offers a peaceful countryside retreat.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1548813831-0268a11e9741?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1567275706-8ade12c5bd3e?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Monster+Park+Bomarzo+Italy"
+      },
+      {
+        "name": "Villa Lante (Bagnaia)",
+        "desc": "One of the most stunning examples of an Italian Mannerist garden. A masterpiece of hydraulic engineering where cascading fountains and symmetrical hedges tell the story of man's harmonious relationship with nature.",
+        "facilities": "Situated in the charming village of Bagnaia. Perfectly paired with a visit to Relais Villa Sofia for classic Italian luxury.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Villa+Lante+Bagnaia+Italy"
+      },
+      {
+        "name": "Palazzo Farnese (Caprarola)",
+        "desc": "A colossal pentagonal fortress turned into a lavish Renaissance palace. Its spiral Scala Regia and the magnificent Room of the World Map showcase the immense power and artistic taste of the Farnese family.",
+        "facilities": "Located in Caprarola, easily reached from Lake Vico. Hotel La Bella Venere offers a relaxing stay near the volcanic lake.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1602940659954-ddd21f3f2fa7?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Palazzo+Farnese+Caprarola"
+      },
+      {
+        "name": "Viterbo — City of Popes",
+        "desc": "One of Italy's best-preserved medieval centers. Enclosed by massive basalt walls, Viterbo was once the refuge of Popes fleeing Rome. Its San Pellegrino district is a labyrinth of stone stairs capturing the true atmosphere of the Middle Ages.",
+        "facilities": "Major hub in Tuscia with a dedicated train station. For a wellness experience, stay at the Terme dei Papi luxury resort.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1524230659092-07f99d932b0a?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Viterbo+Italy"
+      }
+    ]
+  },
+  "bologna": {
+    "name": "Bologna",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bologna_-_Palazzo_Comunale.jpg/600px-Bologna_-_Palazzo_Comunale.jpg",
+    "desc": "The Learned, the Red, and the Fat. Home to the oldest university in the Western world, Bologna is a city of endless porticos, terracotta rooftops, and unparalleled culinary traditions.",
+    "landmarks": [
+      {
+        "name": "The Two Towers",
+        "desc": "The unmistakable symbols of Bologna's medieval skyline. Climbing the 498 wooden steps of the Asinelli Tower is a rite of passage rewarded with a breathtaking view of the Red City stretching toward the horizon.",
+        "facilities": "Located at the intersection of the five ancient streets in Piazza di Porta Ravegnana. Near the historic Hotel Corona d'Oro.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1567001819885-b47e1e8a3f1f?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1524230659092-07f99d932b0a?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Two+Towers+Bologna"
+      },
+      {
+        "name": "Piazza Maggiore & San Petronio",
+        "desc": "The majestic heart of the city. Dominating the piazza is the Basilica of San Petronio, one of the largest in the world with its strikingly unfinished facade. The square is a living theater where locals gather under the Crescentone.",
+        "facilities": "Central hub for all city buses. Surrounded by high-end shopping and near the luxurious Grand Hotel Majestic già Baglioni.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1567275706-8ade12c5bd3e?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Piazza+Maggiore+Bologna"
+      },
+      {
+        "name": "The Porticos of Bologna",
+        "desc": "A UNESCO World Heritage site and the city's most unique architectural feature. Covering nearly 40 kilometres in the city center, these elegant covered walkways allow you to explore the city protected from sun or rain.",
+        "facilities": "Stretching across the entire city. The most famous route starts from Porta Saragozza. Stay at Hotel Portici to experience the architecture firsthand.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1602940659954-ddd21f3f2fa7?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Porticos+of+Bologna"
+      },
+      {
+        "name": "Fountain of Neptune",
+        "desc": "A masterpiece of Mannerist sculpture known by locals as Il Gigante. The bronze statue of Neptune stands majestically over his fountain, surrounded by sirens and cherubs — one of the most photographed monuments in the city.",
+        "facilities": "Located in Piazza del Nettuno, adjacent to Piazza Maggiore. A short walk from the famous Biblioteca Salaborsa.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1524230659092-07f99d932b0a?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Fountain+of+Neptune+Bologna"
+      },
+      {
+        "name": "Archiginnasio of Bologna",
+        "desc": "Once the primary seat of the University of Bologna. Its courtyard and corridors are decorated with thousands of coats of arms of former students. The highlight is the 17th-century Anatomical Theatre, carved entirely from spruce wood.",
+        "facilities": "Located in Piazza Galvani. Within walking distance of the historic food market Quadrilatero and the Art Hotel Commercianti.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1534430480872-c0a6b3f2f0b9?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1565099824688-0e90f43d4f38?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Archiginnasio+Bologna"
+      }
+    ]
+  },
+  "messina": {
+    "name": "Messina",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Messina_-_panorama_dal_porto.jpg/600px-Messina_-_panorama_dal_porto.jpg",
+    "desc": "The Gateway to Sicily. A resilient and noble port city rebuilt with courage after the Great Earthquake of 1908. A city of wide avenues, sea breezes, and celestial wonders, where the legends of Scylla and Charybdis still whisper across the azure waters.",
+    "landmarks": [
+      {
+        "name": "Cathedral & Astronomical Clock",
+        "desc": "A stunning Norman-Gothic cathedral housing the world's largest and most complex astronomical clock. Every day at noon, the mechanical figures come to life in a golden parade of lions, roosters, and biblical scenes accompanied by music.",
+        "facilities": "Located in the central Piazza del Duomo. Short walk from Messina Centrale station. Royal Palace Hotel offers comfort and proximity.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Cathedral+of+Messina+Sicily"
+      },
+      {
+        "name": "Fountain of Orion",
+        "desc": "Hailed as the most beautiful fountain of the sixteenth century. Created by a student of Michelangelo, this marble masterpiece celebrates Orion, the mythical founder of Messina, with intricate carvings of river gods and mythical scenes.",
+        "facilities": "Situated right in front of the Cathedral in Piazza Duomo. Surrounded by traditional cafes where you can enjoy a classic Sicilian granita.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1548813831-0268a11e9741?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1567001819885-b47e1e8a3f1f?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Fountain+of+Orion+Messina"
+      },
+      {
+        "name": "Santissima Annunziata dei Catalani",
+        "desc": "A rare architectural survivor of the city's many earthquakes. This 12th-century church is a jewel of Arab-Norman architecture, showcasing a unique blend of Byzantine domes and Romanesque arches.",
+        "facilities": "Located within walking distance of the port area and Galleria Vittorio Emanuele III. The VMAISON Hotel offers a boutique experience in this historic district.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Santissima+Annunziata+dei+Catalani+Messina"
+      },
+      {
+        "name": "Regional Museum of Messina",
+        "desc": "A sanctuary for Sicily's artistic soul, housing salvaged treasures from the city's past, including two world-famous masterpieces by Caravaggio and the intricate works of Antonello da Messina.",
+        "facilities": "Located at the northern end of the city, reachable by the Messina Tramway. The Garibaldi Theatre is nearby.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1534430480872-c0a6b3f2f0b9?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1565099824688-0e90f43d4f38?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Regional+Museum+Messina+Sicily"
+      },
+      {
+        "name": "Ganzirri Lakes & Capo Peloro",
+        "desc": "The point where the Ionian and Tyrrhenian seas meet. The coastal village of Ganzirri is famous for its shimmering lakes and traditional swordfish hunting. At Capo Peloro, the lighthouse stands guard over the narrowest part of the Strait.",
+        "facilities": "Located about 20 minutes from the city center. Known for its exceptional waterfront seafood trattorias like Casa Peloro.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Capo+Peloro+Messina"
+      }
+    ]
+  },
+  "genoa": {
+    "name": "Genoa",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Genova_bw_1.jpg/600px-Genova_bw_1.jpg",
+    "desc": "La Superba — The Proud One. A majestic maritime republic that once ruled the Mediterranean waves. A vertical city of contrasts where a labyrinth of shadowy medieval Caruggi opens suddenly into grand Renaissance squares and marble palaces.",
+    "landmarks": [
+      {
+        "name": "Aquarium of Genoa",
+        "desc": "The largest aquarium in Italy and a pioneer in marine conservation. Built within the historic Old Harbor, it offers a mesmerizing journey beneath the waves through blue-lit tunnels surrounded by sharks, dolphins, and graceful manatees.",
+        "facilities": "Located in the Porto Antico area. Directly accessible from the San Giorgio Metro station. NH Collection Genova Marina is located right on the pier.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Aquarium+Genoa+Italy"
+      },
+      {
+        "name": "Via Garibaldi",
+        "desc": "A UNESCO World Heritage site and a breathtaking open-air museum of architecture. This Golden Street is lined with the Palazzi dei Rolli — magnificent Renaissance and Baroque palaces that once hosted kings and emperors.",
+        "facilities": "Located in the city center, housing the Musei di Strada Nuova. Hotel Bristol Palace nearby offers a glimpse into the city's aristocratic past.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1565711561500-49678a10a63f?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Via+Garibaldi+Genoa+Italy"
+      },
+      {
+        "name": "Boccadasse",
+        "desc": "A poetic, pastel-colored fishing village hidden at the end of the city's promenade. Its small pebble beach is surrounded by charming houses in shades of ochre and rose, where the sound of waves mingles with the laughter of locals enjoying a gelato.",
+        "facilities": "Accessible via a scenic 3km walk along the Corso Italia promenade or by local bus. Famous for its small seafood eateries like La Sciorba.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1524230659092-07f99d932b0a?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Boccadasse+Genoa"
+      },
+      {
+        "name": "San Lorenzo Cathedral",
+        "desc": "A striking masterpiece of Genoese Gothic architecture with its iconic black-and-white striped marble facade. Protected by stone lions and housing the ashes of St. John the Baptist. Its underground treasury contains the Sacro Catino, once believed to be the Holy Grail.",
+        "facilities": "Situated in Piazza San Lorenzo. Short walk from the Palazzo Ducale and the boutique Hotel Palazzo Grillo.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1567275706-8ade12c5bd3e?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Cathedral+San+Lorenzo+Genoa"
+      },
+      {
+        "name": "The Lanterna",
+        "desc": "The historic sentinel of the sea and the symbol of Genoa. Standing tall on a rock for nearly 900 years, it is one of the oldest working lighthouses in the world. Climbing to its terrace offers a powerful view of the vast industrial port and the city climbing up the hills.",
+        "facilities": "Accessible via a pedestrian path from the Terminal Traghetti. Features a multimedia museum. Holiday Inn Genova City is conveniently located for those visiting the port area.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548813831-0268a11e9741?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Lanterna+Genoa"
+      }
+    ]
+  },
+  "palermo": {
+    "name": "Palermo",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Palermo_-_Cattedrale.jpg/600px-Palermo_-_Cattedrale.jpg",
+    "desc": "The Kingdom of the Sun. A vibrant crossroads of civilizations where East meets West. A city of gilded mosaics, bustling Arab-style markets, and grand opera houses — wrapped in the warm Mediterranean breeze and the scent of street food and citrus groves.",
+    "landmarks": [
+      {
+        "name": "Palermo Cathedral",
+        "desc": "A stunning architectural tapestry that tells the history of Sicily in stone. Its honey-colored walls reflect a mix of Arab, Norman, Gothic, and Baroque styles. Inside, the royal tombs of Frederick II and the treasury house the golden crowns of Sicilian queens.",
+        "facilities": "Located on Via Vittorio Emanuele. Short distance from the Palazzo dei Normanni. Eurostars Centrale Palace offers a majestic stay in a former noble residence.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1524230659092-07f99d932b0a?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Palermo+Cathedral+Sicily"
+      },
+      {
+        "name": "Norman Palace & Palatine Chapel",
+        "desc": "The oldest royal residence in Europe and the crown jewel of Arab-Norman art. The Cappella Palatina inside is a breathtaking sanctuary where every inch of the walls is covered in shimmering 12th-century golden mosaics — a fusion of Islamic geometry and Byzantine iconography.",
+        "facilities": "Situated at the highest point of the historic center. Near the Independenza bus hub. B&B Porta di Castro offers an authentic neighborhood feel.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1565099824688-0e90f43d4f38?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1602940659954-ddd21f3f2fa7?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Palatine+Chapel+Palermo"
+      },
+      {
+        "name": "Teatro Massimo",
+        "desc": "Italy's largest opera house and a temple of lyric art. This neoclassical masterpiece is world-renowned for its perfect acoustics and its grand staircase, which achieved cinematic fame in The Godfather Part III.",
+        "facilities": "Located in Piazza Verdi, surrounded by high-end shopping and historic cafes. The Grand Hotel Et Des Palmes nearby is an iconic part of the city's history.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Teatro+Massimo+Palermo"
+      },
+      {
+        "name": "Quattro Canti",
+        "desc": "The Four Corners mark the symbolic center of Palermo. This octagonal Baroque square is flanked by four nearly identical facades decorated with statues of the seasons, Spanish kings, and patron saints. As the sun moves, it illuminates different corners dramatically.",
+        "facilities": "Intersection of Via Maqueda and Via Vittorio Emanuele. Pedestrian-only zone. Hotel Quintocanto offers a modern spa experience right in the heart of the action.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1567275706-8ade12c5bd3e?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Quattro+Canti+Palermo"
+      },
+      {
+        "name": "Ballarò Market",
+        "desc": "A sensory odyssey through the oldest and most vibrant market in Palermo. Ballarò feels like an ancient Arab souk, where the loud chants of vendors compete with the sizzle of street food like panelle and arancine.",
+        "facilities": "Located in the Albergheria district. Best visited during morning hours. Palazzo Brunaccini boutique hotel is perfectly situated right on the edge of the market.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Ballaro+Market+Palermo"
+      }
+    ]
+  },
+  "naples": {
+    "name": "Naples",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Naples_BW_2013-05-16_13-52-03.jpg/600px-Naples_BW_2013-05-16_13-52-03.jpg",
+    "desc": "The Soul of the Mediterranean. A vibrant, chaotic, and deeply authentic city lying in the shadow of Mount Vesuvius. Naples is a sensory explosion where ancient Greek foundations support Baroque palaces, and where the world's most famous pizza was born.",
+    "landmarks": [
+      {
+        "name": "Castel dell'Ovo",
+        "desc": "The oldest standing fortification in Naples, rising like a stone dream from the sea. Legend says a magical egg is hidden in its foundations. Walking along its ancient ramparts at sunset offers a poetic view of the entire Bay of Naples.",
+        "facilities": "Located on the former island of Megaride, connected by a scenic causeway. Surrounded by Borgo Marinari's seafood restaurants and near the luxury Grand Hotel Vesuvio.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1565711561500-49678a10a63f?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Castel+dell%27Ovo+Naples"
+      },
+      {
+        "name": "Spaccanapoli",
+        "desc": "The straight, narrow street that literally splits the historic heart of Naples. A living theater of Neapolitan life — a maze of laundry-draped balconies, hidden Baroque churches, and the intoxicating aroma of freshly baked sfogliatella.",
+        "facilities": "Located in the UNESCO-listed historic center. Short walk from the Dante Metro station and home to the famous Hotel Piazza Bellini.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1535498730771-e735b998cd64?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548813831-0268a11e9741?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Spaccanapoli+Naples"
+      },
+      {
+        "name": "Pompeii Archaeological Park",
+        "desc": "A frozen moment in time. This ancient Roman city, buried by the eruption of Mt. Vesuvius in 79 AD, offers a hauntingly beautiful glimpse into antiquity. Walking its silent streets past preserved villas is a profound journey into a lost world.",
+        "facilities": "Reachable via the Circumvesuviana train from Naples Central Station. The site requires a full day. Stay at Hotel Forum Pompeii for early access.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Pompeii+Archaeological+Park"
+      },
+      {
+        "name": "Naples Archaeological Museum",
+        "desc": "One of the most important museums in the world for classical antiquities. It houses the magnificent Farnese collection and the breathtaking mosaics rescued from Pompeii and Herculaneum.",
+        "facilities": "Located in Piazza Museo. Directly served by Museo Metro station. Within walking distance of the historic Costantinopoli 104 boutique hotel.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1534430480872-c0a6b3f2f0b9?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=National+Archaeological+Museum+Naples"
+      },
+      {
+        "name": "Mount Vesuvius",
+        "desc": "The sleeping giant that defines the Neapolitan horizon. A hike to the Gran Cono offers a dramatic landscape of volcanic ash. From its summit, the panoramic view of the crescent-shaped bay, the city, and the islands of Capri and Ischia is breathtaking.",
+        "facilities": "Accessible via the Vesuvius Express bus from Ercolano or Pompeii. For a high-end stay with a view of the volcano, the Romeo Hotel in the port area is unmatched.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Mount+Vesuvius+Naples"
+      }
+    ]
+  },
+  "venice": {
+    "name": "Venice",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Canal_Grande_from_Rialto_bridge%2C_south_end.jpg/600px-Canal_Grande_from_Rialto_bridge%2C_south_end.jpg",
+    "desc": "The Floating City. A breathtaking masterpiece of human ingenuity built upon 118 islands, a UNESCO World Heritage Site. A symbol of maritime glory and architectural grace, where historic palaces rise directly from the shimmering waters of the Adriatic.",
+    "landmarks": [
+      {
+        "name": "St. Mark's Basilica",
+        "desc": "A sublime fusion of Italo-Byzantine architecture known as the Church of Gold. Its cavernous interior is adorned with over 8,000 square metres of luminous golden mosaics reflecting the immense wealth and spiritual fervor of the ancient Venetian Republic.",
+        "facilities": "Located in the iconic Piazza San Marco, steps from the historic Caffè Florian and the luxurious Hotel Danieli.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1514890547357-a9ee288726e0?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=St+Mark%27s+Basilica+Venice"
+      },
+      {
+        "name": "The Grand Canal",
+        "desc": "The ancient main artery of Venice. This majestic S-shaped waterway is lined with more than 170 magnificent palaces dating from the 13th to 18th century. Navigating it by gondola or Vaporetto offers a moving gallery of the city's artistic evolution.",
+        "facilities": "Accessible from multiple points including Santa Lucia train station. The Gritti Palace offers one of the best terrace views overlooking the canal.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1524230659092-07f99d932b0a?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Grand+Canal+Venice"
+      },
+      {
+        "name": "Doge's Palace",
+        "desc": "A grand symbol of Venetian political power. This pink-marbled Gothic masterpiece was the residence of the Doge and the seat of government. It houses the famous Bridge of Sighs and Renaissance treasures by Tintoretto.",
+        "facilities": "Situated next to the Basilica in St. Mark's Square. Near the San Zaccaria water bus stop and the elegant Hotel Metropole.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1602940659954-ddd21f3f2fa7?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Doge%27s+Palace+Venice"
+      },
+      {
+        "name": "Rialto Bridge",
+        "desc": "The oldest and most iconic bridge spanning the Grand Canal. With its bold stone arch and bustling rows of shops, it has been the commercial heart of Venice since the 16th century and offers the most famous panoramic view of the canal.",
+        "facilities": "Located in the San Polo district, close to the vibrant Rialto Market. Al Ponte Antico Hotel nearby offers stunning views.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1565099824688-0e90f43d4f38?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Rialto+Bridge+Venice"
+      },
+      {
+        "name": "Burano Island",
+        "desc": "A kaleidoscopic gem nestled in the northern lagoon, world-renowned for its intricate traditional lace-making and vibrant rows of vividly painted houses. Originally colored so fishermen could find their way home through the fog.",
+        "facilities": "Reachable via a 45-minute boat ride (Vaporetto Line 12) from Fondamente Nove. Enjoy fresh seafood at the famous Trattoria da Romano.",
+        "imgs": [
+          "https://images.unsplash.com/photo-1534507592333-1d0d3d4f7c7d?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1567001819885-b47e1e8a3f1f?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "mapUrl": "https://maps.google.com/?q=Burano+Island+Venice"
+      }
+    ]
+  }
+};
+
+// ──────────────────────────────────────────
+// NAVIGATION
+// ──────────────────────────────────────────
+
+function showCity(id) {
+  const city = cities[id];
+  if (!city) return;
+
+  document.getElementById("city-hero-img").src = city.img;
+  document.getElementById("city-hero-img").alt = city.name;
+  document.getElementById("city-title").textContent = city.name;
+  document.getElementById("city-desc").textContent  = city.desc;
+
+  const list = document.getElementById("landmarks-list");
+  list.innerHTML = city.landmarks.map(buildLandmarkCard).join("");
+
+  const home       = document.getElementById("home");
+  const cityScreen = document.getElementById("city-screen");
+
+  home.classList.remove("active");
+  cityScreen.classList.add("active", "animate-in");
+  cityScreen.addEventListener("animationend", () => {
+    cityScreen.classList.remove("animate-in");
+  }, { once: true });
+
+  document.getElementById("city-body").scrollTop = 0;
+}
+
+function goHome() {
+  const home       = document.getElementById("home");
+  const cityScreen = document.getElementById("city-screen");
+
+  cityScreen.classList.remove("active");
+  home.classList.add("active", "animate-back");
+  home.addEventListener("animationend", () => {
+    home.classList.remove("animate-back");
+  }, { once: true });
+}
+
+// ──────────────────────────────────────────
+// TEMPLATE HELPERS
+// ──────────────────────────────────────────
+
+function buildLandmarkCard(landmark) {
+  const imgsHtml = landmark.imgs
+    .map(src => `<img src="${src}" alt="${landmark.name}" loading="lazy">`)
+    .join("");
+
+  return `
+    <div class="landmark-card">
+      <div class="landmark-imgs">${imgsHtml}</div>
+      <div class="landmark-info">
+        <h3>${landmark.name}</h3>
+        <p class="landmark-desc">${landmark.desc}</p>
+        <div class="landmark-facilities">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          ${landmark.facilities}
+        </div>
+        <a class="map-btn" href="${landmark.mapUrl}" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          View on map
+        </a>
+      </div>
+    </div>`;
+}
